@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for
 import numpy as np
-import pickle
+import joblib
 
 app = Flask(__name__, template_folder='templates')
 
@@ -13,8 +13,8 @@ def home_page():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    tree_model = pickle.load(open('Decision_trees.sav', 'rb'))
-    min_max_scaler = pickle.load(open('scaling_tree.sav', 'rb'))
+    tree_model = joblib.load('Decision_trees.sav')
+    min_max_scaler = joblib.load('scaling_tree.sav')
 
     if request.method == 'POST':
 
