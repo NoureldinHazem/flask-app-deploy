@@ -42,7 +42,7 @@ def predict():
         normalized_arr = min_max_scaler.fit_transform(arr)
         my_prediction = tree_model.predict(normalized_arr)
 
-    return render_template('results.html', prediction=my_prediction)
+    return render_template('results.html', prediction=my_prediction[0])
 
 
 if __name__ == '__main__':
